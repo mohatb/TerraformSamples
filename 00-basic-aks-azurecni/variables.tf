@@ -25,7 +25,7 @@ variable "dns_prefix" {
 
 variable "k8s_version" {
   type = string
-  default = "1.24.3"
+  default = "1.27.7"
 }
 
 variable "static-nodeCount" {
