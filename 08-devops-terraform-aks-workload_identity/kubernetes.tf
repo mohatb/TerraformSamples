@@ -1,3 +1,4 @@
+# Provider configuration for Kubernetes
 provider "kubernetes" {
     host                   = azurerm_kubernetes_cluster.example.kube_config.0.host
     client_certificate     = base64decode(azurerm_kubernetes_cluster.example.kube_config.0.client_certificate)
@@ -5,6 +6,7 @@ provider "kubernetes" {
     cluster_ca_certificate = base64decode(azurerm_kubernetes_cluster.example.kube_config.0.cluster_ca_certificate)
 }
 
+# Resource definition for Kubernetes Service Account
 resource "kubernetes_service_account" "example" {
     automount_service_account_token = true
     metadata {

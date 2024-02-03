@@ -1,3 +1,13 @@
+/*
+  This Terraform code defines an Azure Kubernetes Service (AKS) cluster resource.
+  It creates an AKS cluster with the specified name, location, resource group, DNS prefix, and Kubernetes version.
+  The cluster is configured with the Azure network plugin and network policy.
+  It also enables workload identity and OIDC issuer authentication.
+  The default node pool is created with the specified name, node count, and VM size.
+  The cluster identity is set to "SystemAssigned".
+  Tags are added to the resource for better organization and management.
+*/
+
 resource "azurerm_kubernetes_cluster" "example" {
   name                = var.cluster_name
   location            = var.region
@@ -19,13 +29,11 @@ resource "azurerm_kubernetes_cluster" "example" {
     vm_size    = var.machine_type
   }
 
-
   identity {
     type = "SystemAssigned"
   }
 
   tags = {
-  user = "abutaleb"
+    user = "abutaleb"
   }
-
 }

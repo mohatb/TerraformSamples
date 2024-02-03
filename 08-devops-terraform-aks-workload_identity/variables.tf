@@ -62,3 +62,8 @@ variable "service_account_namespace" {
   type    = string
   default = "default"
 }
+
+variable "user_assigned_identity_name" {
+  type    = string
+  default = "workload-identity-test"
+}
