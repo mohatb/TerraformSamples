@@ -10,9 +10,9 @@ spec:
     image: mohatb/workloadidentitytest:latest
     env:
     - name: AZURE_SUBSCRIPTION_ID
-      value: "f0f3c44a-153b-4349-9d6c-6c30282d78cd"
+      value: "<subscription ID>"
     - name: AZURE_RESOURCE_GROUP
-      value: "gitops"
+      value: "<resource group>"
   serviceAccountName: workload-identity-sa
   volumes:
   - name: test-token
