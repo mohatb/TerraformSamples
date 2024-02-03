@@ -1,0 +1,1 @@
+docker build -t mohatb/workloadidentitytest:latest . ; docker push mohatb/workloadidentitytest:latest ; kubectl delete -f pod.yaml ; kubectl apply -f pod.yaml
