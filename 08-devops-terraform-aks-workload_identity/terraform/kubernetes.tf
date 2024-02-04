@@ -17,3 +17,46 @@ resource "kubernetes_service_account" "example" {
         }
     }
 }
+
+# Definition for a Kubernetes Pod
+resource "kubernetes_pod" "access_azure_resources" {
+  metadata {
+    name = "access-azure-resources"
+    labels = {
+      "azure.workload.identity/use" = "true"
+    }
+  }
+
+  spec {
+    container {
+      image = "mohatb/workloadidentitytest:latest"
+      name  = "workloadidentity"
+
+      env {
+        name  = "AZURE_SUBSCRIPTION_ID"
+        value = var.subscription_id_for_sample_pod
+      }
+
+      env {
+        name  = "AZURE_RESOURCE_GROUP"
+        value = var.resource_group_for_sample_pod
+      }
+    }
+
+    service_account_name = "workload-identity-sa"
+
+    volume {
+      name = "test-token"
+
+      projected {
+        sources {
+          service_account_token {
+            path              = "test-token"
+            expiration_seconds = 3600
+            audience          = "test"
+          }
+        }
+      }
+    }
+  }
+}

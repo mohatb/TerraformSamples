@@ -77,3 +77,14 @@ variable "container_access_type" {
   type    = string
   default = "private"
 }
+
+variable "subscription_id_for_sample_pod" {
+  type    = string
+  default = "<subscription_id>"
+}
+
+variable "resource_group_for_sample_pod" {
+  type    = string
+  default = var.resource_group #here we are using the same resource group as the one we are deploying the AKS cluster to for simplicity
+  
+}
