@@ -1,15 +1,18 @@
+# Create a user-assigned identity
 resource "azurerm_user_assigned_identity" "example" {
     name                = var.user_assigned_identity_name
     resource_group_name = azurerm_resource_group.example.name
     location            = var.region
 }
 
+# Assign the Contributor role to the user-assigned identity
 resource "azurerm_role_assignment" "example" {
     scope                = azurerm_resource_group.example.id
     role_definition_name = "Contributor"
     principal_id         = azurerm_user_assigned_identity.example.principal_id
 }
 
+# Create a federated identity credential for the service account
 resource "azurerm_federated_identity_credential" "example" {
     name                = var.service_account_name
     resource_group_name = azurerm_resource_group.example.name
