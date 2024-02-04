@@ -16,7 +16,7 @@ resource "azurerm_storage_account" "example" {
 # The container access type is set to "private".
 
 resource "azurerm_storage_container" "example" {
-    name                  = "examplecontainer"
+    name                  = var.container_name
     storage_account_name  = azurerm_storage_account.example.name
-    container_access_type = "private"
+    container_access_type = var.container_access_type
 }
