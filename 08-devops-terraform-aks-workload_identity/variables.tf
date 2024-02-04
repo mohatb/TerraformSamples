@@ -5,7 +5,7 @@ variable "region" {
 
 variable "resource_group" {
   type    = string
-  default = "gitops"
+  default = "gitops-rg"
 }
 
 variable "cluster_name" {
@@ -65,5 +65,15 @@ variable "service_account_namespace" {
 
 variable "user_assigned_identity_name" {
   type    = string
-  default = "workload-identity-test"
+  default = "user-assigned-workload-identity"
+}
+
+variable "container_name" {
+  type    = string
+  default = "datacontainer"
+}
+
+variable "container_access_type" {
+  type    = string
+  default = "private"
 }
